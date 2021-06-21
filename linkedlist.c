@@ -3,13 +3,14 @@
 
 enum bool{ false = 0 , true = 1 };
 typedef enum bool bool;
-
+/*Data structure to hold data*/
 struct node
 {
 	int data;
 	struct node* next;
 };
 
+/*Returns memory address of an initiliased node*/
 struct node* createNode(int d)
 {
 	struct node* p = malloc(sizeof(struct node));
@@ -18,11 +19,13 @@ struct node* createNode(int d)
 	return p;
 }
 
+/*Change memory address pointed to node*/
 void updateNodeP(struct node** input, struct node* p)
 {
 	*input = &p;
 }
 
+/*Get user input and create a linked list from each instance of node */
 void getGetInputFromUser(struct node** entry ,struct node ** itr)
 {
 	int data;	
@@ -48,6 +51,7 @@ void getGetInputFromUser(struct node** entry ,struct node ** itr)
 	} while (1);
 }
 
+/*Display contents of a node*/
 void displayNode(struct node* p)
 {
 	int nodeCount = 0;
@@ -59,6 +63,8 @@ void displayNode(struct node* p)
 	}
 }
 
+/*Return the memory address of a node that contains data
+Returns null when no data is found*/
 struct node* search(struct node* start, int data)
 {
 	while (start != NULL)
@@ -75,6 +81,8 @@ struct node* search(struct node* start, int data)
 	return NULL;
 }
 
+/*Delete a node that contains search criteria defined as data
+deleteAllInstance flag deletes all items that contain data*/
 void deleteANode(struct node** start,int data, bool deleteAllInstance)
 {
 	struct node* prev = NULL;
@@ -115,6 +123,7 @@ void deleteANode(struct node** start,int data, bool deleteAllInstance)
 	}
 }
 
+/*
 void reverseList(struct node** start)
 {
 	struct node* prev = NULL;
@@ -133,8 +142,9 @@ void reverseList(struct node** start)
 	}
 	*start = prev;
 }
+*/
 
-
+/*Return heap memory after we finish*/
 void freeMemory(struct node* itr)
 {
 	struct node* p = itr;
@@ -148,14 +158,21 @@ void freeMemory(struct node* itr)
 
 int main()
 {
+	/*Base pointer for list*/
 	struct node* start = NULL;
+	/*Iterator pointer for list*/
 	struct node* itr = NULL;
+	/*Creates a linked list here*/
 	getGetInputFromUser(&itr,&start);
+	/*Show contents of linked list*/
 	displayNode(start);
 	//deleteANode(&start,1 , true);
+	/*Print new line character for better readability*/
 	printf("\n");
-	reverseList(&start);
+	//reverseList(&start);
+	/*Show changes from operations on list*/
 	displayNode(start);
+	/*Return heap memory*/
 	freeMemory(start);
 	return 0;
 }
