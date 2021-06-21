@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/*Define boolean for C98*/
 enum bool{ false = 0 , true = 1 };
 typedef enum bool bool;
+
 /*Data structure to hold data*/
 struct node
 {
